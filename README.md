@@ -26,3 +26,6 @@ Job searching (finding companies within a certain locality to check for
                vacancies)
 
 Any questions, let me know.
+
+Please note the following if having issues using this:
+http://forum.aws.chdev.org/t/search-company-officers-returns-http-416-when-start-index-over-300/897
