@@ -69,7 +69,7 @@ if __name__ == "__main__":
   parser.add_argument('-a', metavar='--api-token', type=str,
           help='Your companies house API token.')
   parser.add_argument('-p', metavar='--post-code', type=str,
-          help='The post code you want to search for companies within')
+          help='The post code you want to search for companies within (optional)')
   parser.add_argument('-s', metavar='--search-term', type=str,
           help='The company names you want to search for.')
   args = parser.parse_args()
