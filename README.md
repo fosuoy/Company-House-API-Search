@@ -9,11 +9,14 @@ Companies House API Key - see here:
 https://developer.companieshouse.gov.uk/api/docs/index/gettingStarted/apikey_authorisation.html
 Python 3
 
-See the variables.py file to input the required variables to complete a search:
-1. Search term - e.g. "Petroleum" to find companies with the string petroleum
-   in their title
-2. Companies House API Key - see above
-3. regex of postcode you are searching for companies within
+Run the script with the -h option for a help menu.
+Takes the following arguments:
+  -a --api-token    Your companies house API token.
+  -p --post-code    The post code you want to search for companies within in regex form
+  -s --search-term  The company names you want to search for.
+
+e.g.
+./company_house_search.py -a 12345 -p ^\"LS[0-9]+ -s petroleum
 
 Outputs a results.txt file with all the data gained from the search, and a
 titles.txt for a text file full of the companies titles, followed by their 
