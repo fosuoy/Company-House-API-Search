@@ -1,9 +1,11 @@
-#!/usr/bin/python3
-from requests import get
-from sys import exit
+#!/usr/bin/env python3
+from argparse import ArgumentParser
 from json import loads, dumps
 from re import compile
-import argparse
+from requests import get
+from sys import exit
+
+from variables import COMPANIES_HOUSE_API_KEY, SEARCH_TERM, POSTCODE_REGEX
 
 
 def resultsToJSON(page_number, api_token, search_term):
@@ -67,7 +69,7 @@ if __name__ == "__main__":
   """
   Parse args then trigger search if all OK
   """
-  parser = argparse.ArgumentParser(description='Company House search details...')
+  parser = ArgumentParser(description='Company House search details...')
   parser.add_argument('-a', metavar='--api-token', type=str,
           help='Your companies house API token.')
   parser.add_argument('-p', metavar='--post-code', type=str,
@@ -75,9 +77,13 @@ if __name__ == "__main__":
   parser.add_argument('-s', metavar='--search-term', type=str,
           help='The company names you want to search for.')
   args = parser.parse_args()
-  if args.a == None or args.s == None:
+  if (args.a == None and COMPANIES_HOUSE_API_KEY) or \
+             (args.s == None and SEARCH_TERM == None):
       print("You must supply a valid api token and search term if " +
             "you want this to work properly...")
       print("Use the -h option to see a help menu.")
       exit(1)
-  perform_search( args.a, args.p, args.s )
+  api_token = args.a if args.a else COMPANIES_HOUSE_API_KEY
+  post_code_regex = args.p if args.p else POST_CODE_REGEX
+  search_term = args.s if args.s else SEARCH_TERM
+  perform_search( api_token, post_code_regex, search_term )
