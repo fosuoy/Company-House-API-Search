@@ -77,7 +77,7 @@ if __name__ == "__main__":
   parser.add_argument('-s', metavar='--search-term', type=str,
           help='The company names you want to search for.')
   args = parser.parse_args()
-  if (args.a == None and COMPANIES_HOUSE_API_KEY) or \
+  if (args.a == None and COMPANIES_HOUSE_API_KEY == None) or \
              (args.s == None and SEARCH_TERM == None):
       print("You must supply a valid api token and search term if " +
             "you want this to work properly...")
