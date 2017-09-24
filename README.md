@@ -18,6 +18,13 @@ Takes the following arguments:
 e.g.
 ./company_house_search.py -a 12345 -p ^\"LS[0-9]+ -s petroleum
 
+You can also set these variables in variables.py.
+
+Command line arguments take precedent over what is set in variables.py.
+
+You must run this with at least a search term and an API token, the post code search
+is optional.
+
 Outputs a results.txt file with all the data gained from the search, and a
 titles.txt for a text file full of the companies titles, followed by their 
 addresses.
