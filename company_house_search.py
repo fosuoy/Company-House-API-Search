@@ -52,8 +52,10 @@ def perform_search( api_token, post_code_regex, search_term ):
     json_data = resultsToJSON(str(number * 100), api_token, search_term)
 
     for item in json_data["items"]:
-      if post_code_search and post_code.match(dumps(item["address"]["postal_code"])):
-        write_results(f, t, item)
+      if post_code_search:
+        item_post_code = dumps(item["address"]["postal_code"]) if 'postal_code' in item["address"] else ''
+        if post_code.match(item_post_code):
+          write_results(f, t, item)
       else:
         write_results(f, t, item)
 
